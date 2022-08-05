@@ -11,8 +11,12 @@ body{
     --body-color: #ddfff7;
     --secondary-color: #93E1d8;
     --tertiary-color: #ffa69e;
+    --font-color: #7e8281;
+    --font-color-dark: #565a59;
     font-family: Poppins, sans-serif;
     font-weight: bold;
+    
+    color: var(--font-color-dark);
 }
 section{
     height: 100vh;
@@ -40,10 +44,15 @@ section{
 .calculator-screen{
     height: 135px;
     width: 320px;
-    background-color: var(--secondary-color);
+    /* background-color: var(--secondary-color); */
+
+    /* testing bg color */
+    
+    background-color: var(--font-color);
+    color: var(--body-color);
     border-radius: 40px;
 
-    box-shadow: inset 0 3px 40px -20px;
+    box-shadow: inset 0 3px 40px -15px rgba(0,0,0,0.5);
     
 }
 /* upper part of calc screen */
@@ -56,7 +65,7 @@ section{
     padding: 20px;
     padding-right: 50px;
     text-align: right;
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 /* lower part of calc screen  */
 .screen-output{
@@ -69,7 +78,7 @@ section{
     padding-right: 50px;
 
     text-align: right;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 /* button container */
@@ -88,16 +97,16 @@ button{
     border-radius: 20px;
     background-color: var(--secondary-color);
 
-    box-shadow: inset 0 5px 30px -20px;
+    box-shadow: inset 0 1px 5px;
     font-size: 1.25em;
     font-weight: 800;
 
     color: #7e8281;
 }
-button:hover{
+.press, button:hover{
     background-color: var(--tertiary-color);
-    color: black;
-    transition: ease-in 0.1s;
+    color: var(--font-color-dark);
+    transition: ease-out 0.25s;
 }
 .big-btn{
     width: 145px;
