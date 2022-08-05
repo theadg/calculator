@@ -1,8 +1,8 @@
 
-
+// declaration
 const numButtons = document.querySelectorAll('.num');
 const calcOutput = document.querySelector(".screen-output");
-
+        calcOutput.textContent = "";
 let number = "";
 
 // putting the number into the calc screen
@@ -49,3 +49,38 @@ function addComma(number){
     
     // console.log(numArr);
 }
+
+//declaration
+const operators = document.querySelectorAll('.operator');
+const calcInput = document.querySelector('.screen-calculations');
+
+operators.forEach((operator) => {
+    operator.onclick = () => {
+        if (calcOutput.textContent === ""){
+            alert("Nothing to compute");
+            clearUpperScreen();
+        } else {
+
+        calcInput.textContent = `${calcOutput.textContent} ${operator.textContent}`;
+        number = "";
+        clearBottomScreen();
+        }
+    }
+})
+
+function clearBottomScreen(){
+    calcOutput.textContent = "";
+}
+
+ function clearUpperScreen(){
+    calcInput.textContent = "";
+ }
+
+
+ //declaration
+ const allClear = document.querySelector('.all-clear');
+ allClear.onclick = () => {
+  clearUpperScreen();
+  clearBottomScreen();
+  number = "";  
+ };
