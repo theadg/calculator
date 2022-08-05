@@ -25,29 +25,27 @@ numButtons.forEach((button) =>{
     }
 });
 
-// // adding commas
-// function addComma(number){ 
+// adding commas
+function addComma(number){ 
     
-//     //convert number into an array
-//     const numArr  =  Array.from(String(number));
+    //convert number into an array
+    const numArr  =  Array.from(String(number));
 
-//     if (numArr.length >= 4){
-//         for (let i = 3; i < numArr.length; i+=4){
+    if (numArr.length >= 4){
+        for (let i = 3; i < numArr.length; i+=4){
 
-//             numArr.reverse().splice(i, 0, ",");
-//             console.log(numArr.reverse());
-//             // const numComma = numArr.join('')
-//             // numArr.reverse();
-//         }
+            numArr.reverse().splice(i, 0, ",");
+            console.log(numArr.reverse());
+            // const numComma = numArr.join('')
+            // numArr.reverse();
+        }
         
-//         const numComma = numArr.join('');
-//         return numComma;
-//     } else{
-//         numComma = number;
-//         return numComma;
-//     }
+        const numComma = numArr.join('');
+        return numComma;
+    } else{
+        numComma = number;
+        return numComma;
+    }
     
-//     // console.log(numArr);
-// }
-
-// addComma();
+    // console.log(numArr);
+}
