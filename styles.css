@@ -103,6 +103,7 @@ button{
 
     color: #7e8281;
 }
+
 .press, button:hover{
     background-color: var(--tertiary-color);
     color: var(--font-color-dark);
