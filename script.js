@@ -18,7 +18,7 @@ numButtons.forEach((button) =>{
         // output num 
        
         // number = parseInt(number); //converting number from string to int
-        calcOutput.textContent = (addComma(number).numberArr);
+        calcOutput.textContent = number;
         }
 
 
@@ -30,39 +30,39 @@ let numContainer ={
     numContainer: 0,
 }
 // adding commas
-function addComma(number){ 
-    
-    //convert number into an array
-    const numArr  =  Array.from(String(number));
+        // function addComma(number){ 
+            
+        //     //convert number into an array
+        //     const numArr  =  Array.from(String(number));
 
-    if (numArr.length >= 4){
-        for (let i = 3; i < numArr.length; i+=4){
-
-            numArr.reverse().splice(i, 0, ",");
-            console.log(numArr.reverse());
-            // const numComma = numArr.join('')
-            // numArr.reverse();
-        }
-        
-        const numComma = numArr.join('');
-        // return numComma;
-        numContainer = {
-            number: number,
-            numberArr: numComma,
-        }   
-        return numContainer;
-    } else{
-        numComma = number;
-       numContainer = {
-            number: number,
-            numberArr: numComma,
-        } 
-        // return numComma;
-        return numContainer;
-    }
-    
-    // console.log(numArr);
-}
+        //     if (numArr.length >= 4){
+        //         for (let i = 3; i < numArr.length; i+=4){
+        //             parseInt(secondaryNum)
+        //             numArr.reverse().splice(i, 0, ",");
+        //             console.log(numArr.reverse());
+        //             // const numComma = numArr.join('')
+        //             // numArr.reverse();
+        //         }
+                
+        //         const numComma = numArr.join('');
+        //         // return numComma;
+        //         numContainer = {
+        //             number: number,
+        //             numberArr: numComma,
+        //         }   
+        //         return numContainer;
+        //     } else{
+        //         numComma = number;
+        //     numContainer = {
+        //             number: number,
+        //             numberArr: numComma,
+        //         } 
+        //         // return numComma;
+        //         return numContainer;
+        //     }
+            
+        //     // console.log(numArr);
+        // }
 
 
 
@@ -76,7 +76,7 @@ const calcInput = document.querySelector('.screen-calculations');
 //     //     if (calcOutput.textContent === ""){
 //     //         alert("Nothing to compute");
 //     //         clearUpperScreen();
-//     //     } else {
+//     //     } else {parseInt(secondaryNum)
 
 //     //     initialNum = calcOutput.textContent;
      
@@ -97,33 +97,69 @@ convert = (initialNum) => {
     console.log(numArr);
 };
 
-
+parseInt(secondaryNum)
 //operator
+//puts the initial number into the 
 operate = () => {
     if (calcOutput.textContent === ""){
         alert("Nothing to compute");
         clearUpperScreen();
     } else {
-
     initialNum = calcOutput.textContent;
- 
-    calcInput.textContent = `${initialNum} ${operator}`;
+    calcInput.textContent = `${initialNum} ${operator}`; //-----> putting this to addUpperScreen func
 
-    initialNum = numContainer.number;
-    console.log(initialNum);
+    // numContainer.number = initialNum;
+    console.log(numContainer.number);
+    console.log(`Secondary num: ${secondaryNum}`);
     number = "";
+
     clearBottomScreen();
+        
+    
     }
 };
+
+let checkNum;
 //getting operator 
 const add = document.querySelector("#add");
-let operator = ""
+const subtract = document.querySelector("#subtract");
+const multiply = document.querySelector("#multiply");
+const divide = document.querySelector("#divide");
+
+let operator = "";
 
 add.onclick = () =>{
     operator = "+";
     operate();
+
+    calcInput.textContent =  addUpperScreen(initialNum, operator);
 }
 
+subtract.onclick = () =>{
+    operator = "-";
+    operate();
+
+    calcInput.textContent =  addUpperScreen(initialNum, operator);
+}
+multiply.onclick = () =>{
+    operator = "*";
+    operate();
+
+    calcInput.textContent =  addUpperScreen(initialNum, operator);
+} 
+
+divide.onclick = () =>{
+    operator = "/";
+    operate();
+
+    calcInput.textContent =  addUpperScreen(initialNum, operator);
+} 
+
+
+userInput = ''; 
+addUpperScreen = (initialNum, operator) =>{
+    return userInput = `${initialNum} ${operator}`;
+}
 function clearBottomScreen(){
     calcOutput.textContent = "";
 }
@@ -147,16 +183,60 @@ function clearBottomScreen(){
  const equalBtn = document.getElementById("equals");
 
  equalBtn.onclick = () => {
-    secondaryNum = calcOutput.textContent;
-    compute(initialNum,secondaryNum);
-    
+    computeContinue(initialNum);
+    console.log('------------------------------')
+    console.log(`Initial Num: ${initialNum}`);
+    console.log(`Secondary Num: ${secondaryNum}`);
+   
+    // initialNum = calcOutput.textContent;
+    // swap(initialNum);
  }
+let i;
+computeContinue = (initialNum) => {
+    if (calcInput.textContent.includes("=")){
 
+    } else {
+       secondaryNum = calcOutput.textContent;
+        if (secondaryNum === ''){
+            calcOutput.textContent = `${initialNum}`
+        } else {
+            compute(initialNum,secondaryNum);
 
+        calcInput.textContent = `${initialNum} ${operator} ${secondaryNum} =`;
+        }
+
+    
+        // initialNum = calcOutput.textContent;
+        
+    }
+   
+}
  //computing num
 compute = (initialNum,secondaryNum) =>{
     if (operator === "+"){
         output = parseInt(initialNum) + parseInt(secondaryNum);
-        calcOutput.textContent = output;
+        calcOutput.textContent = output; 
+    }   else if(operator === "-"){
+        output = parseInt(initialNum) - parseInt(secondaryNum);
+        calcOutput.textContent = output; 
+    }   else if(operator === "*"){
+        output = parseInt(initialNum) * parseInt(secondaryNum);
+        calcOutput.textContent = output; 
+    }   else if(operator === "/"){
+        output = parseInt(initialNum) / parseInt(secondaryNum);
+        calcOutput.textContent = output; 
     }
+
+
+
+
+        initialNum = output;
+        return initialNum;
+        // getInitialNum(output);
+        // console.log(`Initial Num (COMP): ${initialNum}`);
+   
  };
+
+
+
+// remove one character from user input 
