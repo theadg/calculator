@@ -5,10 +5,12 @@ const calcOutput = document.querySelector(".screen-output");
         calcOutput.textContent = "";
 let number = "";
 let initialNum, secondaryNum;
+let hasDP = false;
 // putting the number into the calc screen
 // MAKE IT FOR FLOATS AS WELL
 numButtons.forEach((button) =>{
     button.onclick = () => {
+        
         number += button.textContent;
         
         // check length
@@ -29,6 +31,20 @@ let numContainer ={
     number: 0,
     numContainer: 0,
 }
+// add decimal pt
+const decimalPt = document.querySelector("#decimalPoint");
+decimalPt.onclick = () => { 
+    if (hasDP){
+
+    } else {
+        hasDP = true;
+        calcOutput.textContent += '.';
+        return number += '.';
+
+    }
+}
+
+
 // adding commas
         // function addComma(number){ 
             
@@ -113,6 +129,7 @@ operate = () => {
     console.log(`Secondary num: ${secondaryNum}`);
     number = "";
 
+    hasDP = false;
     clearBottomScreen();
         
     
@@ -144,7 +161,7 @@ subtract.onclick = () =>{
 multiply.onclick = () =>{
     operator = "*";
     operate();
-
+   
     calcInput.textContent =  addUpperScreen(initialNum, operator);
 } 
 
@@ -175,13 +192,16 @@ function clearBottomScreen(){
  allClear.onclick = () => {
   clearUpperScreen();
   clearBottomScreen();
+  initialNum = 0;
+  secondaryNum = 0;
   number = "";  
+  hasDP = false;
  };
 
 
  //declaration
  const equalBtn = document.getElementById("equals");
-
+ 
  equalBtn.onclick = () => {
     computeContinue(initialNum);
     console.log('------------------------------')
@@ -214,7 +234,7 @@ computeContinue = (initialNum) => {
  //computing num
 compute = (initialNum,secondaryNum) =>{
     if (operator === "+"){
-        output = parseInt(initialNum) + parseInt(secondaryNum);
+        output = parseFloat(initialNum) + parseFloat(secondaryNum);
         calcOutput.textContent = output; 
     }   else if(operator === "-"){
         output = parseInt(initialNum) - parseInt(secondaryNum);
