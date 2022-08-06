@@ -203,11 +203,16 @@ function clearBottomScreen(){
  const equalBtn = document.getElementById("equals");
  
  equalBtn.onclick = () => {
-    computeContinue(initialNum);
-    console.log('------------------------------')
-    console.log(`Initial Num: ${initialNum}`);
-    console.log(`Secondary Num: ${secondaryNum}`);
-   
+    if (calcOutput.textContent === ""){
+        calcOutput.textContent = 0;
+    } else {
+        computeContinue(initialNum);
+        console.log('------------------------------')
+        console.log(`Initial Num: ${initialNum}`);
+        console.log(`Secondary Num: ${secondaryNum}`);
+       
+    }
+ 
     // initialNum = calcOutput.textContent;
     // swap(initialNum);
  }
@@ -235,18 +240,25 @@ computeContinue = (initialNum) => {
 compute = (initialNum,secondaryNum) =>{
     if (operator === "+"){
         output = parseFloat(initialNum) + parseFloat(secondaryNum);
-        calcOutput.textContent = output; 
+       
     }   else if(operator === "-"){
-        output = parseInt(initialNum) - parseInt(secondaryNum);
-        calcOutput.textContent = output; 
+        output = parseFloat(initialNum) - parseFloat(secondaryNum);
+        // calcOutput.textContent = output; 
     }   else if(operator === "*"){
-        output = parseInt(initialNum) * parseInt(secondaryNum);
-        calcOutput.textContent = output; 
+        output = parseFloat(initialNum) * parseFloat(secondaryNum);
+        // calcOutput.textContent = output; 
     }   else if(operator === "/"){
-        output = parseInt(initialNum) / parseInt(secondaryNum);
-        calcOutput.textContent = output; 
+            if (parseFloat(secondaryNum) === 0){
+                alert("fuck off");
+            } else {
+                output = parseFloat(initialNum) / parseFloat(secondaryNum);
+            }
+     
+        // calcOutput.textContent = output; 
     }
 
+    output = +output.toFixed(2);
+    calcOutput.textContent = output; 
 
 
 
