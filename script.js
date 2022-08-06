@@ -238,5 +238,18 @@ compute = (initialNum,secondaryNum) =>{
  };
 
 
-
+//declaration
+const clear = document.querySelector("#c");
 // remove one character from user input 
+
+clear.onclick = () => {
+    const number1 = calcOutput.textContent;
+    const numArr = Array.from(String(number1));
+
+    //removing last digit
+    numArr.splice(numArr.length-1);
+    //
+    const realNum = numArr.join('');
+    number = realNum;
+    calcOutput.textContent = realNum;
+}
