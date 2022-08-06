@@ -142,7 +142,7 @@ const add = document.querySelector("#add");
 const subtract = document.querySelector("#subtract");
 const multiply = document.querySelector("#multiply");
 const divide = document.querySelector("#divide");
-
+const mod = document.querySelector("#mod");
 let operator = "";
 
 add.onclick = () =>{
@@ -171,7 +171,12 @@ divide.onclick = () =>{
 
     calcInput.textContent =  addUpperScreen(initialNum, operator);
 } 
+mod.onclick = () => {
+    operator = "%";
+    operate();
 
+    calcInput.textContent =  addUpperScreen(initialNum, operator);
+}
 
 userInput = ''; 
 addUpperScreen = (initialNum, operator) =>{
@@ -246,16 +251,15 @@ compute = (initialNum,secondaryNum) =>{
         // calcOutput.textContent = output; 
     }   else if(operator === "*"){
         output = parseFloat(initialNum) * parseFloat(secondaryNum);
-        // calcOutput.textContent = output; 
     }   else if(operator === "/"){
             if (parseFloat(secondaryNum) === 0){
                 alert("fuck off");
             } else {
                 output = parseFloat(initialNum) / parseFloat(secondaryNum);
             }
-     
-        // calcOutput.textContent = output; 
-    }
+    } else if(operator === "%"){
+        output = parseFloat(initialNum) % parseFloat(secondaryNum);
+    }  
 
     output = +output.toFixed(2);
     calcOutput.textContent = output; 
