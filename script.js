@@ -224,7 +224,15 @@ function clearBottomScreen(){
 let i;
 computeContinue = (initialNum) => {
     if (calcInput.textContent.includes("=")){
-
+        if (calcOutput.textContent === ""){
+            calcOutput.textContent = 0;
+        } else {
+            computeContinue(initialNum);
+            console.log('------------------------------')
+            console.log(`Initial Num: ${initialNum}`);
+            console.log(`Secondary Num: ${secondaryNum}`);
+        
+        }
     } else {
        secondaryNum = calcOutput.textContent;
         if (secondaryNum === ''){
@@ -280,11 +288,7 @@ const clear = document.querySelector("#c");
 
 clear.onclick = () => {
     const number1 = calcOutput.textContent;
-    const numArr = Array.from(String(number1)); //operators 
-    const operators = ["+", "-", "/", "*", "%"];
-    if (operators.includes(e.key)){
-        console.log(e.key);
-    }
+    const numArr = Array.from(String(number1)); 
 
     //removing last digit
     numArr.splice(numArr.length-1);
@@ -325,7 +329,7 @@ document.onkeydown = (e) => {
         }
     }
 
-    //enter
+    //enter (equals)
     if (e.key == "Enter"){
         if (calcOutput.textContent === ""){
             calcOutput.textContent = 0;
@@ -337,6 +341,20 @@ document.onkeydown = (e) => {
         
         }
     }   
+
+    //backspace (clear)
+    if (e.key == "Backspace"){
+        const number1 = calcOutput.textContent;
+        const numArr = Array.from(String(number1)); 
+    
+        //removing last digit
+        numArr.splice(numArr.length-1);
+        //
+        const realNum = numArr.join('');
+        number = realNum;
+        calcOutput.textContent = realNum;
+
+    }
 } 
 
 //good for combinations
