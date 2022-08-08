@@ -324,7 +324,55 @@ document.onkeydown = (e) => {
         calcOutput.textContent = number;
         }
     }
+
+    //enter
+    if (e.key == "Enter"){
+        if (calcOutput.textContent === ""){
+            calcOutput.textContent = 0;
+        } else {
+            computeContinue(initialNum);
+            console.log('------------------------------')
+            console.log(`Initial Num: ${initialNum}`);
+            console.log(`Secondary Num: ${secondaryNum}`);
+        
+        }
+    }   
 } 
+
+//good for combinations
+document.onkeyup = (e) => {
+    //operators 
+    const operators = ["+", "-", "/", "*", "%"];
+    if (operators.includes(e.key)){
+        if (e.key == "+"){
+           operator = "+";
+           operate();
+
+           calcInput.textContent =  addUpperScreen(initialNum, operator);
+        } else if (e.key == "-") {
+            operator = "-";
+           operate();
+
+           calcInput.textContent =  addUpperScreen(initialNum, operator);
+        } else if (e.key == "*") {
+            operator = "*";
+           operate();
+
+           calcInput.textContent =  addUpperScreen(initialNum, operator);
+        } else if (e.key == "/") {
+            operator = "/";
+           operate();
+
+           calcInput.textContent =  addUpperScreen(initialNum, operator);
+        } else if (e.key == "%") {
+            operator = "%";
+           operate();
+
+           calcInput.textContent =  addUpperScreen(initialNum, operator);
+        }
+    }
+}
+
 
 
 
