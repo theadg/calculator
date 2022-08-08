@@ -230,7 +230,7 @@ computeContinue = (initialNum) => {
         if (secondaryNum === ''){
             calcOutput.textContent = `${initialNum}`
         } else {
-            compute(initialNum,secondaryNum);
+            compute(initialNum,secondaryNum); 
 
         calcInput.textContent = `${initialNum} ${operator} ${secondaryNum} =`;
         }
@@ -280,7 +280,11 @@ const clear = document.querySelector("#c");
 
 clear.onclick = () => {
     const number1 = calcOutput.textContent;
-    const numArr = Array.from(String(number1));
+    const numArr = Array.from(String(number1)); //operators 
+    const operators = ["+", "-", "/", "*", "%"];
+    if (operators.includes(e.key)){
+        console.log(e.key);
+    }
 
     //removing last digit
     numArr.splice(numArr.length-1);
@@ -289,3 +293,38 @@ clear.onclick = () => {
     number = realNum;
     calcOutput.textContent = realNum;
 }
+
+
+//keydown
+// document.addEventListener("keydown", (e) =>{
+//     const numbers = [1,2,3,4,5,6,7,8,9,0];
+
+//     for (let number of numbers){
+//         if (e.key === number){
+//             console.log(e.key);
+//         }
+//     }
+    
+// });
+
+document.onkeydown = (e) => {
+    //numbers
+    const numbers = [1,2,3,4,5,6,7,8,9,0];
+
+    if (numbers.includes(parseInt(e.key))){
+        number += (e.key);
+        
+        // check length
+        if (number.length > 11){
+            alert("Input limit");
+        } else {
+        // output num 
+       
+        // number = parseInt(number); //converting number from string to int
+        calcOutput.textContent = number;
+        }
+    }
+} 
+
+
+
